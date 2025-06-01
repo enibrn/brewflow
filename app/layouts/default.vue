@@ -1,9 +1,54 @@
 <template>
   <v-app>
-    <v-main>
-      <slot />
-    </v-main>
+    <!-- App Bar -->
+    <v-app-bar
+      color="primary"
+      dark
+      prominent
+      app
+    > <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-toolbar-title>Flowless App</v-toolbar-title>
+      <v-spacer />
+      <span class="mr-4 text-body-2">Ciao, {{ user?.username }}</span>
+      <v-btn
+        icon
+        @click="logout"
+      >
+        <v-icon>mdi-logout</v-icon>
+      </v-btn>
+    </v-app-bar>
 
-    <AppFooter />
+    <!-- Sidebar -->
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+    > <v-list>
+        <v-list-item
+          prepend-icon="mdi-home"
+          title="Home"
+          to="/"
+        />
+        <v-list-item
+          prepend-icon="mdi-cog"
+          title="Impostazioni"
+          to="/settings"
+        />
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- Main Content -->
+    <v-main>
+      <v-container fluid>
+        <slot />
+      </v-container>
+    </v-main>
   </v-app>
 </template>
+
+<script
+  setup
+  lang="ts"
+>
+const { user, logout } = useAuth()
+const drawer = ref(false)
+</script>
