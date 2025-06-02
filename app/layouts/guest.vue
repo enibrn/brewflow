@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <v-main> <!-- Hero Section for Login/Register -->
+    <v-main>
+      <!-- Hero Section for Login/Register -->
       <v-container
         fluid
         class="fill-height"
@@ -16,7 +17,8 @@
             md="6"
             lg="4"
           >
-            <v-card class="elevation-8"> <v-card-title class="text-center pa-6">
+            <v-card class="elevation-8">
+              <v-card-title class="text-center pa-6">
                 <h1 class="text-h4">Brewflow</h1>
                 <p class="text-subtitle-1 mt-2">Welcome to your app</p>
               </v-card-title>
@@ -28,6 +30,9 @@
         </v-row>
       </v-container>
     </v-main>
+
+    <!-- Footer -->
+    <AppFooter />
   </v-app>
 </template>
 
@@ -40,7 +45,8 @@
 
 <style scoped>
 .fill-height {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 </style>

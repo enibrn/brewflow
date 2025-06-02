@@ -42,6 +42,9 @@
         <slot />
       </v-container>
     </v-main>
+
+    <!-- Footer -->
+    <AppFooter />
   </v-app>
 </template>
 
