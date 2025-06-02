@@ -7,8 +7,8 @@
             <h1 class="text-h4">Dashboard</h1>
           </v-card-title>
           <v-card-text>
-            <p>Benvenuto nella tua dashboard, {{ user?.username }}!</p>
-            <p>Questa è la pagina principale dell'applicazione autenticata.</p>
+            <p>Welcome to your dashboard, {{ user?.username }}!</p>
+            <p>This is the main page of the authenticated application.</p>
           </v-card-text>
         </v-card>
       </v-col>
@@ -22,10 +22,10 @@
         <v-card>
           <v-card-title>
             <v-icon class="mr-2">mdi-chart-line</v-icon>
-            Statistiche
+            Statistics
           </v-card-title>
           <v-card-text>
-            <p>Qui potresti mostrare grafici e statistiche.</p>
+            <p>Here you could show charts and statistics.</p>
           </v-card-text>
         </v-card>
       </v-col>
@@ -36,10 +36,10 @@
         <v-card>
           <v-card-title>
             <v-icon class="mr-2">mdi-bell</v-icon>
-            Notifiche
+            Notifications
           </v-card-title>
           <v-card-text>
-            <p>Qui potresti mostrare le notifiche recenti.</p>
+            <p>Here you could show recent notifications.</p>
           </v-card-text>
         </v-card>
       </v-col>
@@ -51,7 +51,7 @@
   setup
   lang="ts"
 >
-// Applica il middleware di autenticazione
+// Apply authentication middleware
 definePageMeta({
   middleware: 'auth'
 })

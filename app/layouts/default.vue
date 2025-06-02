@@ -9,7 +9,7 @@
     > <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-toolbar-title>Brewflow App</v-toolbar-title>
       <v-spacer />
-      <span class="mr-4 text-body-2">Ciao, {{ user?.username }}</span>
+      <span class="mr-4 text-body-2">Hi, {{ user?.username }}</span>
       <v-btn
         icon
         @click="logout"
@@ -30,7 +30,7 @@
         />
         <v-list-item
           prepend-icon="mdi-cog"
-          title="Impostazioni"
+          title="Settings"
           to="/settings"
         />
       </v-list>

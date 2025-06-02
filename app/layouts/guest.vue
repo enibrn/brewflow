@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <v-main>
-      <!-- Hero Section per Login/Register -->
+    <v-main> <!-- Hero Section for Login/Register -->
       <v-container
         fluid
         class="fill-height"
@@ -17,10 +16,9 @@
             md="6"
             lg="4"
           >
-            <v-card class="elevation-8">
-              <v-card-title class="text-center pa-6">
+            <v-card class="elevation-8"> <v-card-title class="text-center pa-6">
                 <h1 class="text-h4">Brewflow</h1>
-                <p class="text-subtitle-1 mt-2">Benvenuto nella tua app</p>
+                <p class="text-subtitle-1 mt-2">Welcome to your app</p>
               </v-card-title>
               <v-card-text class="pa-6">
                 <slot />
@@ -37,7 +35,7 @@
   setup
   lang="ts"
 >
-// Layout per pagine non autenticate (login, register, ecc.)
+// Layout for non-authenticated pages (login, register, etc.)
 </script>
 
 <style scoped>

@@ -1,12 +1,12 @@
 export default defineNuxtRouteMiddleware((to) => {
   const { isLoggedIn } = useAuth()
 
-  // Se l'utente non è autenticato e sta cercando di accedere a una pagina protetta
+  // If the user is not authenticated and trying to access a protected page
   if (!isLoggedIn.value && to.path !== '/login') {
     return navigateTo('/login')
   }
 
-  // Se l'utente è autenticato e sta cercando di accedere alla pagina di login
+  // If the user is authenticated and trying to access the login page
   if (isLoggedIn.value && to.path === '/login') {
     return navigateTo('/')
   }

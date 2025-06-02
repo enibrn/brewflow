@@ -27,9 +27,7 @@
         class="mb-4"
       >
         {{ errorMessage }}
-      </v-alert>
-
-      <v-btn
+      </v-alert> <v-btn
         type="submit"
         color="primary"
         block
@@ -37,15 +35,13 @@
         :loading="loading"
         class="mt-4"
       >
-        Accedi
+        Login
       </v-btn>
     </v-form>
 
-    <v-divider class="my-4" />
-
-    <v-card-text class="text-center">
+    <v-divider class="my-4" /> <v-card-text class="text-center">
       <p class="text-caption">
-        Usa <strong>demo</strong> come username e password per accedere
+        Use <strong>demo</strong> as username and password to login
       </p>
     </v-card-text>
   </div>
@@ -55,7 +51,7 @@
   setup
   lang="ts"
 >
-// Usa il layout guest per questa pagina
+// Use guest layout for this page
 definePageMeta({
   layout: 'guest'
 })
@@ -68,21 +64,20 @@ const loading = ref(false)
 const errorMessage = ref('')
 
 const rules = {
-  required: (value: string) => !!value || 'Campo obbligatorio'
+  required: (value: string) => !!value || 'Required field'
 }
 
 const handleLogin = async () => {
   loading.value = true
   errorMessage.value = ''
-
   try {
     const result = await login(username.value, password.value)
     if (!result.success) {
-      errorMessage.value = result.error || 'Errore durante il login'
+      errorMessage.value = result.error || 'Login error'
     }
   } catch (error) {
     console.error('Login error:', error)
-    errorMessage.value = 'Errore durante il login'
+    errorMessage.value = 'Login error'
   } finally {
     loading.value = false
   }
