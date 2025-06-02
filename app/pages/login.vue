@@ -29,7 +29,7 @@
         {{ errorMessage }}
       </v-alert> <v-btn
         type="submit"
-        color="primary"
+        color="secondary"
         block
         size="large"
         :loading="loading"
@@ -42,7 +42,7 @@
     <v-divider class="my-4" />
 
     <v-btn
-      color="secondary"
+      color="primary"
       variant="outlined"
       block
       size="large"

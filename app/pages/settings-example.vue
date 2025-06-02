@@ -294,6 +294,92 @@
         </v-btn>
       </template>
     </v-snackbar>
+
+    <!-- Notification Test Section -->
+    <v-row class="mt-4">
+      <v-col cols="12">
+        <v-card>
+          <v-card-title>
+            <v-icon class="mr-2">mdi-bell-ring</v-icon>
+            Notification Test Center
+          </v-card-title>
+          <v-card-subtitle>
+            Test the new dark pastel color scheme for notifications
+          </v-card-subtitle>
+          <v-card-text> <v-row>
+              <v-col
+                v-for="notificationType in notificationTypes"
+                :key="notificationType.type"
+                cols="12"
+                md="3"
+              >
+                <v-btn
+                  :color="notificationType.color"
+                  :prepend-icon="notificationType.icon"
+                  variant="tonal"
+                  block
+                  class="mb-2"
+                  @click="testNotification(notificationType)"
+                >
+                  {{ notificationType.label }}
+                </v-btn>
+              </v-col>
+            </v-row>
+
+            <v-divider class="my-4" />
+
+            <!-- Custom notification test -->
+            <v-row class="mt-4">
+              <v-col cols="12">
+                <h3 class="text-h6 mb-3">Custom Notification Test</h3>
+                <v-row>
+                  <v-col
+                    cols="12"
+                    md="6"
+                  >
+                    <v-text-field
+                      v-model="customNotification.message"
+                      label="Custom Message"
+                      prepend-icon="mdi-message-text"
+                      variant="outlined"
+                      class="mb-3"
+                    />
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-select
+                      v-model="customNotification.type"
+                      :items="notificationTypes"
+                      item-title="label"
+                      item-value="type"
+                      label="Notification Type"
+                      prepend-icon="mdi-palette"
+                      variant="outlined"
+                      class="mb-3"
+                    />
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-btn
+                      color="secondary"
+                      prepend-icon="mdi-send"
+                      block
+                      @click="sendCustomNotification"
+                    >
+                      Send Custom
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -374,6 +460,43 @@ const rules = {
   passwordMatch: (value: string) => value === passwordSettings.value.newPassword || 'Passwords do not match'
 }
 
+// Notification Test Data
+const notificationTypes = ref([
+  {
+    type: 'success',
+    label: 'Success',
+    color: 'success',
+    icon: 'mdi-check-circle',
+    message: 'Operation completed successfully!'
+  },
+  {
+    type: 'error',
+    label: 'Error',
+    color: 'error',
+    icon: 'mdi-alert-circle',
+    message: 'An error occurred while processing your request'
+  },
+  {
+    type: 'warning',
+    label: 'Warning',
+    color: 'warning',
+    icon: 'mdi-alert',
+    message: 'Please review your settings before continuing'
+  },
+  {
+    type: 'info',
+    label: 'Info',
+    color: 'info',
+    icon: 'mdi-information',
+    message: 'Here is some useful information for you'
+  }
+])
+
+const customNotification = ref({
+  message: 'This is a custom notification message',
+  type: 'success'
+})
+
 // Methods
 const saveProfile = async () => {
   loadingProfile.value = true
@@ -447,6 +570,18 @@ const deleteAccount = () => {
   showNotification('Account deletion would be processed here', 'error')
   showDeleteDialog.value = false
   deleteConfirmation.value = ''
+}
+
+// Notification Test Functions
+const testNotification = (notificationType: { message: string; color: string }) => {
+  showNotification(notificationType.message, notificationType.color)
+}
+
+const sendCustomNotification = () => {
+  const selectedType = notificationTypes.value.find(type => type.type === customNotification.value.type)
+  if (selectedType) {
+    showNotification(customNotification.value.message, selectedType.color)
+  }
 }
 
 const showNotification = (message: string, color: string) => {

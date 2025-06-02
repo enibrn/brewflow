@@ -117,6 +117,8 @@
   setup
   lang="ts"
 >
+import { useTheme } from 'vuetify'
+
 interface Activity {
   id: number
   title: string
@@ -134,6 +136,8 @@ interface QuickAction {
   color: string
   action: string
 }
+
+const theme = useTheme()
 
 // Mock data
 const recentActivities: Activity[] = [
@@ -213,9 +217,12 @@ const drawSalesChart = () => {
   const ctx = salesChart.value.getContext('2d')
   if (!ctx) return
 
+  // Get primary color from Vuetify theme
+  const primaryColor = theme.current.value.colors.primary
+
   // Simple mock chart drawing
   ctx.clearRect(0, 0, 400, 200)
-  ctx.strokeStyle = '#667eea'
+  ctx.strokeStyle = primaryColor
   ctx.lineWidth = 3
   ctx.beginPath()
 
@@ -236,7 +243,7 @@ const drawSalesChart = () => {
 
   // Add gradient fill
   ctx.globalAlpha = 0.3
-  ctx.fillStyle = '#667eea'
+  ctx.fillStyle = primaryColor
   ctx.lineTo(400, 200)
   ctx.lineTo(0, 200)
   ctx.fill()
@@ -256,9 +263,13 @@ const drawDonutChart = () => {
   // Clear canvas
   ctx.clearRect(0, 0, 200, 200)
 
+  // Get colors from Vuetify theme
+  const primaryColor = theme.current.value.colors.primary
+  const secondaryColor = theme.current.value.colors.secondary
+  
   const data = [
-    { value: 30, color: '#667eea' },
-    { value: 25, color: '#764ba2' },
+    { value: 30, color: primaryColor },
+    { value: 25, color: secondaryColor },
     { value: 20, color: '#f093fb' },
     { value: 25, color: '#4facfe' }
   ]

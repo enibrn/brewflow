@@ -7,18 +7,10 @@
       prominent
       app
     > <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <v-toolbar-title>Brewflow App</v-toolbar-title>      <v-spacer />
+      <v-toolbar-title>Brewflow App</v-toolbar-title>
+      <v-spacer />
       <span class="mr-4 text-body-2">
         Hi, {{ user?.username }}
-        <v-chip
-          v-if="isGuest"
-          size="x-small"
-          color="orange"
-          variant="outlined"
-          class="ml-2"
-        >
-          Guest
-        </v-chip>
       </span>
       <v-btn
         icon
@@ -45,8 +37,8 @@
         />
         <v-list-item
           prepend-icon="mdi-cog"
-          title="Settings"
-          to="/settings"
+          title="Settings Example"
+          to="/settings-example"
         />
       </v-list>
     </v-navigation-drawer>
@@ -56,7 +48,9 @@
       <v-container fluid>
         <slot />
       </v-container>
-    </v-main>    <!-- Footer -->
+    </v-main>
+    
+    <!-- Footer -->
     <AppFooter />
 
     <!-- Global Notifications -->
@@ -83,7 +77,7 @@
   setup
   lang="ts"
 >
-const { user, logout, isGuest } = useAuth();
+const { user, logout } = useAuth();
 const { showSnackbar, snackbarMessage, snackbarColor, snackbarTimeout, hideNotification } = useNotifications();
 const drawer = ref(false)
 </script>
