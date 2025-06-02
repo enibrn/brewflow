@@ -2,7 +2,7 @@
   <v-app>
     <!-- App Bar -->
     <v-app-bar
-      color="primary"
+      class="gradient"
       dark
       prominent
       app
@@ -27,6 +27,11 @@
           prepend-icon="mdi-home"
           title="Home"
           to="/"
+        />
+        <v-list-item
+          prepend-icon="mdi-table"
+          title="CRUD Example"
+          to="/crud-example"
         />
         <v-list-item
           prepend-icon="mdi-cog"

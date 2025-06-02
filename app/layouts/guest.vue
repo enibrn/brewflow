@@ -4,7 +4,7 @@
       <!-- Hero Section for Login/Register -->
       <v-container
         fluid
-        class="fill-height"
+        class="fill-height gradient"
       >
         <v-row
           justify="center"
@@ -47,6 +47,5 @@
 .fill-height {
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 </style>
