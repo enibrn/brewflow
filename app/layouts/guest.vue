@@ -19,7 +19,7 @@
           >
             <v-card class="elevation-8">
               <v-card-title class="text-center pa-6">
-                <h1 class="text-h4">Flowless</h1>
+                <h1 class="text-h4">Brewflow</h1>
                 <p class="text-subtitle-1 mt-2">Benvenuto nella tua app</p>
               </v-card-title>
               <v-card-text class="pa-6">

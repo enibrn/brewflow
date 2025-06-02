@@ -7,7 +7,7 @@
       prominent
       app
     > <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <v-toolbar-title>Flowless App</v-toolbar-title>
+      <v-toolbar-title>Brewflow App</v-toolbar-title>
       <v-spacer />
       <span class="mr-4 text-body-2">Ciao, {{ user?.username }}</span>
       <v-btn
