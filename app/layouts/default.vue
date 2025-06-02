@@ -20,26 +20,38 @@
       </v-btn>
     </v-app-bar>
 
-    <!-- Sidebar -->
-    <v-navigation-drawer
+    <!-- Sidebar -->    <v-navigation-drawer
       v-model="drawer"
       app
-    > <v-list>
+    >
+      <v-list>
         <v-list-item
           prepend-icon="mdi-home"
           title="Home"
           to="/"
         />
-        <v-list-item
-          prepend-icon="mdi-table"
-          title="CRUD Example"
-          to="/crud-example"
-        />
-        <v-list-item
-          prepend-icon="mdi-cog"
-          title="Settings Example"
-          to="/settings-example"
-        />
+        
+        <!-- Collapsible Example Section -->
+        <v-list-group value="examples">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              prepend-icon="mdi-flask"
+              title="Examples"
+            />
+          </template>
+          
+          <v-list-item
+            prepend-icon="mdi-table"
+            title="CRUD"
+            to="/example/crud"
+          />
+          <v-list-item
+            prepend-icon="mdi-cog"
+            title="Settings"
+            to="/example/settings"
+          />
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
