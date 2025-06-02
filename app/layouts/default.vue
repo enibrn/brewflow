@@ -7,9 +7,19 @@
       prominent
       app
     > <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <v-toolbar-title>Brewflow App</v-toolbar-title>
-      <v-spacer />
-      <span class="mr-4 text-body-2">Hi, {{ user?.username }}</span>
+      <v-toolbar-title>Brewflow App</v-toolbar-title>      <v-spacer />
+      <span class="mr-4 text-body-2">
+        Hi, {{ user?.username }}
+        <v-chip
+          v-if="isGuest"
+          size="x-small"
+          color="orange"
+          variant="outlined"
+          class="ml-2"
+        >
+          Guest
+        </v-chip>
+      </span>
       <v-btn
         icon
         @click="logout"
@@ -46,10 +56,26 @@
       <v-container fluid>
         <slot />
       </v-container>
-    </v-main>
-
-    <!-- Footer -->
+    </v-main>    <!-- Footer -->
     <AppFooter />
+
+    <!-- Global Notifications -->
+    <v-snackbar
+      v-model="showSnackbar"
+      :color="snackbarColor"
+      :timeout="snackbarTimeout"
+      location="top right"
+    >
+      {{ snackbarMessage }}
+      <template #actions>
+        <v-btn
+          variant="text"
+          @click="hideNotification"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -57,6 +83,7 @@
   setup
   lang="ts"
 >
-const { user, logout } = useAuth()
+const { user, logout, isGuest } = useAuth();
+const { showSnackbar, snackbarMessage, snackbarColor, snackbarTimeout, hideNotification } = useNotifications();
 const drawer = ref(false)
 </script>

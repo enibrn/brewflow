@@ -6,7 +6,7 @@
     >
       <v-text-field
         v-model="username"
-        label="Username"
+        label="Nome utente"
         prepend-icon="mdi-account"
         :rules="[rules.required]"
         required
@@ -39,9 +39,25 @@
       </v-btn>
     </v-form>
 
-    <v-divider class="my-4" /> <v-card-text class="text-center">
+    <v-divider class="my-4" />
+
+    <v-btn
+      color="secondary"
+      variant="outlined"
+      block
+      size="large"
+      :loading="guestLoading"
+      class="mb-4"
+      @click="handleGuestLogin"
+    >
+      <v-icon left>mdi-account-question</v-icon>
+      Continue as Guest
+    </v-btn> <v-card-text class="text-center">
       <p class="text-caption">
         Use <strong>demo</strong> as username and password to login
+      </p>
+      <p class="text-caption text-grey">
+        As a guest, you can use the app with temporary offline data
       </p>
     </v-card-text>
   </div>
@@ -56,11 +72,12 @@ definePageMeta({
   layout: 'guest'
 })
 
-const { login } = useAuth()
+const { login, loginAsGuest } = useAuth()
 
 const username = ref('')
 const password = ref('')
 const loading = ref(false)
+const guestLoading = ref(false)
 const errorMessage = ref('')
 
 const rules = {
@@ -80,6 +97,18 @@ const handleLogin = async () => {
     errorMessage.value = 'Login error'
   } finally {
     loading.value = false
+  }
+}
+
+const handleGuestLogin = async () => {
+  guestLoading.value = true
+  try {
+    await loginAsGuest()
+  } catch (error) {
+    console.error('Guest login error:', error)
+    errorMessage.value = 'Guest login error'
+  } finally {
+    guestLoading.value = false
   }
 }
 </script>
